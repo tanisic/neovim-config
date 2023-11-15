@@ -14,3 +14,5 @@ map("n", "<leader>ci", "<cmd>TSToolsAddMissingImports<cr>") -- TS add missing im
 map("n", "<leader>t", "<cmd>ToggleTerm<cr>") -- Toggle terminal
 
 map("n", "<leader>š", "<cmd>LspRestart tsserver<cr>") -- Restart TS LSP server
+
+map("n", "<leader>xc", "<Plug>RestNvim") -- Rest query execute
