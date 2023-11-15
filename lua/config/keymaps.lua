@@ -12,3 +12,5 @@ map("n", "<leader>cx", "<cmd>TSToolsRenameFile<cr>") -- TS rename file with upda
 map("n", "<leader>ci", "<cmd>TSToolsAddMissingImports<cr>") -- TS add missing imports
 
 map("n", "<leader>t", "<cmd>ToggleTerm<cr>") -- Toggle terminal
+
+map("n", "<leader>š", "<cmd>LspRestart tsserver<cr>") -- Restart TS LSP server
