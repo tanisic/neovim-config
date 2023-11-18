@@ -18,3 +18,4 @@ map("n", "<leader>č", "<cmd>OutputPanel<cr>", { desc = "LSP logs panel toggle" 
 map("n", "<leader>š", "<cmd>LspRestart tsserver<cr>", { desc = "Restart TS LSP server" })
 
 map("n", "<leader>xc", "<Plug>RestNvim", { desc = "Execute REST query" })
+map("n", "<leader>cm", "<cmd>MarkdownPreviewToggle<cr>", { desc = "Render markdown" })
