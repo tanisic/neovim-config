@@ -5,9 +5,9 @@ return {
     config = true,
     cmd = "ToggleTerm",
     build = ":ToggleTerm",
-    keys = { { "<F4>", "<cmd>ToggleTerm<cr>", desc = "Toggle floating terminal window" } },
+    keys = { { "<F2>", "<cmd>ToggleTerm<cr>", desc = "Toggle floating terminal window" } },
     opts = {
-      open_mapping = [[<F4>]],
+      open_mapping = [[<F2>]],
       direction = "float",
       hide_numbers = true,
       insert_mappings = true,
