@@ -1,66 +1,47 @@
-local util = require("conform.util")
+-- local util = require("conform.util")
+-- ---@type conform.FileFormatterConfig
+-- local biome = {
+--   meta = {
+--     url = "https://github.com/biomejs/biome",
+--     description = "A toolchain for web projects, aimed to provide functionalities to maintain them.",
+--   },
+--   command = util.from_node_modules("biome"),
+--   stdin = true,
+--   args = { "format", "--stdin-file-path", "$FILENAME" },
+--   cwd = util.root_file({
+--     "biome.json",
+--     "biome.jsonc",
+--   }),
+-- }
+
 return {
   "stevearc/conform.nvim",
   event = { "BufReadPre", "BufNewFile" },
-  config = function()
-    local conform = require("conform")
-    conform.setup({
-      ---@type table<string, conform.FormatterUnit[]>
-      formatters_by_ft = {
-        javascript = { "prettier" },
-        typescript = { "prettier" },
-        javascriptreact = { "prettier", "rustywind" },
-        typescriptreact = { "prettier", "rustywind" },
-        svg = { "svgFormatter" },
-        svelte = { "prettier" },
-        css = { "prettier" },
-        html = { "prettier", "rustywind" },
-        json = { "prettier" },
-        yaml = { "prettier" },
-        markdown = { "prettier" },
-        graphql = { "prettier" },
-        lua = { "stylua" },
-        python = { "isort", "black" },
-      },
-      formatters = {
-        svgFormatter = {
-          url = "https://github.com/prettier/prettier",
-          description = [[Prettier is an opinionated code formatter. It enforces a consistent style by parsing your code and re-printing it with its own rules that take the maximum line length into account, wrapping code when necessary.]],
-          command = util.from_node_modules("prettier"),
-          args = { "--parser", "html", "--stdin-filepath", "$FILENAME" },
-          range_args = function(ctx)
-            local start_offset, end_offset = util.get_offsets_from_range(ctx.buf, ctx.range)
-            return { "$FILENAME", "--range-start=" .. start_offset, "--range-end=" .. end_offset }
-          end,
-          cwd = util.root_file({
-            ".prettierrc",
-            ".prettierrc.json",
-            ".prettierrc.yml",
-            ".prettierrc.yaml",
-            ".prettierrc.json5",
-            ".prettierrc.js",
-            ".prettierrc.cjs",
-            ".prettierrc.toml",
-            "prettier.config.js",
-            "prettier.config.cjs",
-            "package.json",
-          }),
-        },
-      },
-      format_on_save = {
-        lsp_fallback = true,
-        async = false,
-        quiet = false,
-        timeout_ms = 3000,
-      },
-    })
-    vim.keymap.set({ "n", "v" }, "<leader>mp", function()
-      conform.format({
-        lsp_fallback = true,
-        async = false,
-        quiet = false,
-        timeout_ms = 3000,
-      })
-    end, { desc = "Format file or range (in visual mode)" })
-  end,
+  opts = {
+    formatters = {
+      biome = { required_cwd = true },
+    },
+    formatters_by_ft = {
+      javascript = { "biome", "prettierd", "prettier", stop_after_first = true },
+      typescript = { "biome", "prettierd", "prettier", stop_after_first = true },
+      javascriptreact = { "biome", "rustywind" },
+      typescriptreact = { "biome", "rustywind" },
+      svg = { "svgFormatter" },
+      svelte = { "biome" },
+      css = { "biome" },
+      html = { "biome", "prettier", "rustywind" },
+      json = { "biome" },
+      yaml = { "biome" },
+      markdown = { "biome" },
+      graphql = { "biome" },
+      lua = { "stylua" },
+      python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
+    },
+    format_on_save = {
+      lsp_fallback = true,
+      async = false,
+      quiet = false,
+      timeout_ms = 3000,
+    },
+  },
 }

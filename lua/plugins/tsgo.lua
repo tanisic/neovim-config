@@ -1,0 +1,88 @@
+-- -- lua/plugins/tsgo.lua
+return {}
+-- return {
+--   {
+--     "neovim/nvim-lspconfig",
+--     opts = {
+--       servers = {
+--         tsserver = { enabled = false },
+--         ts_ls = { enabled = false },
+--         vtsls = { enabled = false },
+--
+--         tsgo = {
+--           cmd = { "tsgo", "--lsp", "--stdio" },
+--           filetypes = {
+--             "javascript",
+--             "javascriptreact",
+--             "javascript.jsx",
+--             "typescript",
+--             "typescriptreact",
+--             "typescript.tsx",
+--           },
+--           root_markers = {
+--             "tsconfig.json",
+--             "jsconfig.json",
+--             "package.json",
+--             ".git",
+--           },
+--
+--           -- these will start working once tsgo actually supports the actions
+--           keys = {
+--             {
+--               "<leader>co",
+--               function()
+--                 vim.lsp.buf.code_action({
+--                   apply = true,
+--                   context = {
+--                     only = { "source.organizeImports" },
+--                     diagnostics = {},
+--                   },
+--                 })
+--               end,
+--               desc = "Organize Imports",
+--             },
+--             {
+--               "<leader>cM",
+--               function()
+--                 vim.lsp.buf.code_action({
+--                   apply = true,
+--                   context = {
+--                     only = { "source.addMissingImports.ts" },
+--                     diagnostics = {},
+--                   },
+--                 })
+--               end,
+--               desc = "Add missing imports",
+--             },
+--             {
+--               "<leader>cu",
+--               function()
+--                 vim.lsp.buf.code_action({
+--                   apply = true,
+--                   context = {
+--                     only = { "source.removeUnused.ts" },
+--                     diagnostics = {},
+--                   },
+--                 })
+--               end,
+--               desc = "Remove unused imports",
+--             },
+--             {
+--               "<leader>cD",
+--               function()
+--                 vim.lsp.buf.code_action({
+--                   apply = true,
+--                   context = {
+--                     only = { "source.fixAll.ts" },
+--                     diagnostics = {},
+--                   },
+--                 })
+--               end,
+--               desc = "Fix all diagnostics",
+--             },
+--           },
+--         },
+--       },
+--     },
+--   },
+-- }
